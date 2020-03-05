@@ -26,6 +26,11 @@
   text-decoration: none;
 }
 
+#button {
+  width: 80%;
+  --background: rgb(121, 121, 121);	
+}
+
 ion-content ion-toolbar {
   --background: translucent;
 }
