@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Names Manager</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <app-example></app-example>
+  <ion-item>
+    <ion-input id="input" value="" placeholder="Name"></ion-input>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="add()" expand="block" color="warning">Add name</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-list>
+      <ion-item *ngFor="let name of mysql_data">
+        <ion-label>{{ name.naam }}</ion-label>
+        <ion-button (click)="remove(name.naam)" fill="clear" color="danger">remove
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button expand="block" (click)="saveChanges()" color="light">Save changes</ion-button>
+  </ion-toolbar>
+</ion-footer>

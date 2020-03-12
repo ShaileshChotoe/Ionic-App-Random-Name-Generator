@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS randomgenerator;
+
+use randomgenerator;
+
+create table namen (
+	naam VARCHAR(20)
+);
+
+insert into namen (naam) values 
+('Shailesh'), ('Blubub'), ('Sisi'), ('Juju'), ('Curvy');

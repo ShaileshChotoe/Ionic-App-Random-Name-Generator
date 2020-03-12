@@ -1,5 +1,12 @@
-<ion-content [fullscreen]="true">
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Generator</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
 
+<ion-content fullscreen='true'>
   <div id="container">
     <ion-text color="white">
       <h1 id="text">
@@ -7,7 +14,11 @@
       </h1>
     </ion-text>
     <!-- als je op de button klikt word de functie update aangeroepen in home.page.ts -->
-    <ion-button (click)="update()" id="button">Choose the unlucky one !</ion-button>
+    <ion-button color="warning" (click)="update()" id="button">Choose the unlucky one
+    </ion-button>
+    <ion-button color="light" [routerLink]="['/names']">
+      <ion-icon slot="end" name="cog"></ion-icon>Manage names
+    </ion-button>
   </div>
 
 </ion-content>

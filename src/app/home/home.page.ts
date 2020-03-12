@@ -1,18 +1,40 @@
 import { Component } from '@angular/core';
-//import { TestBed } from '@angular/core/testing';
+import { ApiService } from 'src/app/api.service';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
+
 export class HomePage {
 
-  names = ['Shailesh', 'Posty', 'Loki', 'Derc', 'BlobBlob', 'Curvy'];
-  unluckyName = 'Hier komt een random naam';
+  mysql_data;
+  unluckyName = ' Hallo ';
   oldName;
 
-  constructor() { }
+  constructor(private api: ApiService) {
+    //roep getprofile aan en roep de functie set aan met de data
+    this.updateNames();
+  }
+
+  updateNames() {
+    this.api.getNames().subscribe(data => this.set(data));
+  }
+
+
+  set(data) {
+    //zet mysql data aan data
+    this.mysql_data = data;
+  }
+
+
+  ionViewWillEnter() {
+    this.updateNames();
+    console.log('test');
+  }
 
   update() {
 
@@ -35,9 +57,10 @@ export class HomePage {
 
   chooseRandomName() {
     // kies een random getal tussen 0 en de array lengte
-    var randomNumber = Math.floor((Math.random() * this.names.length));
+    var randomNumber = Math.floor((Math.random() * this.mysql_data.length));
+
     // kies de naam van de names array met dat random getal
-    this.unluckyName = this.names[randomNumber];
+    this.unluckyName = this.mysql_data[randomNumber].naam;
   }
 
 }
